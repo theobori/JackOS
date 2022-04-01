@@ -1,0 +1,33 @@
+boot_sector:
+	- size : 512
+		- header: asm hexa code
+		- padding: filled of 0 until size is 510
+		- magic nb :0xAA55 (endianness sensible, x86 -> little-endian. big-endian -> 0x55AA)
+
+Important registres:
+ah -> video interrupt (interupts CPU, provided by BIOS)
+	- 0x0e -> tty mode (write in tty al contains)
+	- 0x02 -> hard disk (read)
+al -> byte storage
+int -> launch interupt
+	0x10 : interrupt code (Video services) actions depends on ah
+	0x13 : call hard-disk
+bp -> store base address to the stack
+sp -> store byte in stack
+
+Important addresses:
+0x7c00 -> Boot sector address (put by BIOS)
+0xb80000 -> VGA address
+
+Segmentation:
+	special registers : cs, ds, ss and es
+
+hard-disk read:
+	al -> nb_sectors to read
+	cl -> sector we want to read now
+	"Thus, any bytes after byte 512 correspond to sector 2 of cylinder 0 of head 0 of hdd 0"
+
+protected mode: 32 bits
+	registers:
+		- cli : disable interrupts
+		- lgdt : load gdt_descriptor
