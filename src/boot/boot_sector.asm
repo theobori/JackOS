@@ -1,18 +1,39 @@
-[org 0x7c00]                ; offset because BIOS put boot_sector at adress 0x7c00 so all of the registers and adresses will have an offset
+[org 0x7c00]                ; boot sector offset because BIOS put boot_sector at this adress
+                            ; it will put this offset for all code
 
-mov bx, WELCOME_MESSAGE     ; Printing Welcome Message
+mov [BOOT_DRIVE], dl        ; Remember that the BIOS sets us the boot drive in 'dl' on boot
+mov bp, 0x9000              ; set the stack far from boot sector avoding overlapping
+mov sp, bp
+
+mov bx, WELCOME_MESSAGE
 call print
 call print_newline
 
-; call load_kernel
-jmp $                       ; jmp to current adress making infinite loop
+call load_kernel            ; read the kernel from disk
+call switch_to_pm           ; switching from real mode to protected mode
 
 %include "src/boot/utils/print.asm"
+%include "src/boot/disk.asm"
+%include "src/boot/switch_pm.asm"
+
+[bits 16]
+load_kernel:
+    mov bx, KERNEL_OFFSET   ; Read from disk and store in 0x1000
+    mov dh, 2
+    mov dl, [BOOT_DRIVE]
+    call disk_load
+    ret
+
+[bits 32]
+entry_point:
+    call KERNEL_OFFSET      ; Give control to the kernel
+    jmp $                   ; infinite loop until kernel give control back
+
+BOOT_DRIVE db 0             ; It is a good idea to store it in memory because 'dl' may get overwritten
+KERNEL_OFFSET equ 0x1000    ; The same one we used when linking the kernel in the Makefile
 
 WELCOME_MESSAGE:
-    db "Welcome into JackOS !", 0
+    db "Welcome to JackOS !", 0
 
-times 510 - ($-$$) db 0     ; fill adress with 0 unti mem length == 510
-dw 0xaa55                   ; two last bytes for magic number
-                            ; magic number is read by the BIOS looking for if it's an os or not
-                            ; so the total mem length == 512 (sector size)
+times 510 - ($-$$) db 0     ; fill memory with zeros until we rich 510
+dw 0xaa55                   ; magic number, BIOS needs it to know that's an os

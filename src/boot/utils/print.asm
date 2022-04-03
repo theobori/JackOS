@@ -1,31 +1,29 @@
-; Simple print function for kernel
-; Parameters :
-;   - bx : string to print
+; print generic function
+; parameters:
+;   - string to print -> bx
 
 print:
     pusha
 
-print_loop:
-    mov al, [bx]
+.print_loop:
+    mov al, [bx]                ; al register contains char to print
     cmp al, 0
-    je print_done
-    mov ah, 0x0e                ; go to tty mode
-    int 0x10                    ; interrupts CPU to print char in bx
-    add bx, 1
-    jmp print_loop
+    je .print_done
+    mov ah, 0x0e                ; put in tty mode
+    int 0x10                    ; call BIOS
+    inc bx
+    jmp .print_loop
 
-print_done:
+.print_done:
     popa
     ret
 
 print_newline:
     pusha
-    mov ah, 0x0e
-    mov al, 0x0a                ; newline char
-    int 0x10
+    mov ah, 0x0e                ; put in tty mode
+    mov al, 0x0a                ; newline
+    int 0x10                    ; call BIOS
     mov al, 0x0d                ; carriage return
-    int 0x10
+    int 0x10                    ; call BIOS
     popa
     ret
-
-
