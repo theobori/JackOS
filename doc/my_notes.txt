@@ -31,3 +31,5 @@ protected mode: 32 bits
 	registers:
 		- cli : disable interrupts
 		- lgdt : load gdt_descriptor
+
+gdt expained : https://www.youtube.com/watch?v=Wh5nPn2U_1w
