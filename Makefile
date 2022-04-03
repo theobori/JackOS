@@ -1,4 +1,4 @@
-C_SRCS			= src/kernel/entry_point/main.c
+C_SRCS			= src/kernel/entry_point/entry.c
 C_OBJS			= $(C_SRCS:.c=.o)
 C_FLAGS			= -ffreestanding -c
 
@@ -35,7 +35,7 @@ fclean: clean
 re: fclean all
 
 %.o: %.c
-	i386-elf-gcc $(C_FLAGS) $@ $< -o $@
+	i386-elf-gcc $(C_FLAGS) $< -o $@
 
 %.o: %.asm
 	nasm $(ASM_FLAGS) $< -o $@
