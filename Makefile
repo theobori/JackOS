@@ -1,6 +1,8 @@
-C_SRCS			= src/kernel/entry_point/entry.c
+C_SRCS			= src/kernel/entry_point/entry.c \
+				src/kernel/utils/print.c
+
 C_OBJS			= $(C_SRCS:.c=.o)
-C_FLAGS			= -ffreestanding -c
+C_FLAGS			= -ffreestanding -c -std=c99 -Isrc/kernel/ 
 
 ASM_SRC			= src/boot/kernel_entry.asm
 ASM_OBJ			= $(ASM_SRC:.asm=.o)
