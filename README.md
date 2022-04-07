@@ -23,8 +23,8 @@ A general guide for contributing can be found in [`Contributing.md`](doc/Contrib
 
 ## Authors
 
-* **Théo Bori** - [github](https://twitter.com/awesomekling)
-* **Hugo Marrasse** - [github](https://github.com/rburchell)
+* **Théo Bori** - [github](https://github.com/theobori)
+* **Hugo Marrasse** - [github](https://github.com/pulk66-s)
 
 ## License
 
