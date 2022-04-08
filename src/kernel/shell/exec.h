@@ -1,7 +1,7 @@
 #ifndef __SHELL_EXEC_H__
     #define __SHELL_EXEC_H__
 
-    #include "utils/print.h"
+    #include "drivers/screen/screen.h"
     #include "shell_struct.h"
 
     #define UNKNOWN_CMD "Unknown command"

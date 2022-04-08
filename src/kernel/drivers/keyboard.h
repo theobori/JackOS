@@ -2,7 +2,7 @@
     #define __KEYBOARD_DRIVER_H__
 
     #include "interrupts/isr.h"
-    #include "utils/print.h"
+    #include "drivers/screen/screen.h"
     #include "shell/shell.h"
 
 enum BiosKeyboardKey {
