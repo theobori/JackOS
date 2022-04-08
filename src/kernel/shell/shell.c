@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "shell_intern.h"
 
 /**
  * @brief
