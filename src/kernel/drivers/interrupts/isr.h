@@ -3,6 +3,9 @@
 
     #include "idt.h"
     #include "utils/string.h"
+    #include "../ports.h"
+
+    #define IRQ(x) (unsigned int)(x + 32)
 
 // Must be externed and defined in interrupts.asm because we cannot
 // Identify the interrupts id. 
@@ -49,5 +52,8 @@ typedef struct registers_s {
 
 void isr_install();
 void isr_handler(registers_t r);
+
+typedef void (*isr_t)(registers_t);
+isr_t interrupt_handlers[256];
 
 #endif

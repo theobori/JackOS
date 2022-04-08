@@ -1,6 +1,9 @@
 #ifndef __KEYBOARD_DRIVER_H__
     #define __KEYBOARD_DRIVER_H__
 
+    #include "interrupts/isr.h"
+    #include "utils/print.h"
+
 enum BiosKeyboardKey {
     ERROR,                      // Case of problem
     ESC,
@@ -28,5 +31,7 @@ enum BiosKeyboardKey {
     LALT,
     SPC,                        // ???
 };
+
+void init_keyboard();
 
 #endif
