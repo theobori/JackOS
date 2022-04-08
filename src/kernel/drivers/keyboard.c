@@ -25,7 +25,7 @@ static char get_char_pressed(unsigned char scancode)
  * 
  * @param regs 
  */
-static void keyboard_callback(registers_t regs)
+static void keyboard_callback(__attribute__((unused))registers_t regs)
 {
     unsigned char scancode = port_byte_in(0x60);
     shell_input(get_char_pressed(scancode));

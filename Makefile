@@ -10,10 +10,11 @@ C_SRCS			= $(KPATH)/entry_point/entry.c \
 				$(KPATH)/drivers/interrupts/timer.c \
 				$(KPATH)/drivers/keyboard.c \
 				$(KPATH)/shell/shell.c \
-				$(KPATH)/shell/clear.c
+				$(KPATH)/shell/clear.c \
+				$(KPATH)/shell/exec.c
 
 C_OBJS			= $(C_SRCS:.c=.o)
-C_FLAGS			= -ffreestanding -c -std=c99 -Isrc/kernel/ 
+C_FLAGS			= -W -Wall -Wextra -ffreestanding -c -std=c99 -Isrc/kernel/ 
 
 ASM_SRC			= src/boot/kernel_entry.asm
 ASM_OBJ			= $(ASM_SRC:.asm=.o)

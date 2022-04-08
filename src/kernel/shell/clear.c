@@ -17,7 +17,7 @@ void break_line()
  */
 void clear_line()
 {
-    for (int i = 0; i < shell.line_size; i++)
+    for (unsigned int i = 0; i < shell.line_size; i++)
         shell.line[i] = 0;
     shell.line_size = 0;
 }

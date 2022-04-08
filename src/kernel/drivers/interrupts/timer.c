@@ -7,7 +7,7 @@ unsigned int tick = 0;
  * 
  * @param regs : all the registers
  */
-static void timer_callback(registers_t regs)
+static void timer_callback(__attribute__((unused))registers_t regs)
 {
     tick++;
     // kprint_at("Tick: ", 0, 0, SET_COLOR(WHITE, GREEN));

@@ -40,6 +40,7 @@ void shell_input(char c)
 {
     switch (c) {
         case '\n':                          // Not saving lines for now, only
+            exec(shell.line);
             clear_line();
             break_line();
             break;

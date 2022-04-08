@@ -52,7 +52,6 @@ void clear_screen(unsigned char color)
  */
 void kprint_at_int_at(const int n, unsigned short x, unsigned short y, unsigned char color)
 {
-    char *video_memory = (char *) VGA_ADRESS;
     char str[10];
     int i = 9;
     int replicate = n;

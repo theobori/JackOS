@@ -5,5 +5,6 @@
     #include "drivers/keyboard.h"
     #include "shell_struct.h"
     #include "clear.h"
+    #include "exec.h"
 
 #endif

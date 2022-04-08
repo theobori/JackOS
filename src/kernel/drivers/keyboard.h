@@ -22,7 +22,7 @@ enum BiosKeyboardKey {
     SINGLE_QUOTE,               // '
     ANTI_QUOTE,                 // `
     LSHIFT,
-    BACKSLASH,                  //\ 
+    BACKSLASH,
     Z,X,C,V,B,N,M,
     COMMA,
     DOT,
