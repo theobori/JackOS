@@ -1,6 +1,5 @@
 KPATH			= src/kernel
 C_SRCS			= $(KPATH)/entry_point/entry.c \
-				$(KPATH)/utils/print.c \
 				$(KPATH)/utils/itoa.c \
 				$(KPATH)/utils/strlen.c \
 				$(KPATH)/utils/strrev.c \
@@ -11,7 +10,8 @@ C_SRCS			= $(KPATH)/entry_point/entry.c \
 				$(KPATH)/drivers/keyboard.c \
 				$(KPATH)/shell/shell.c \
 				$(KPATH)/shell/clear.c \
-				$(KPATH)/shell/exec.c
+				$(KPATH)/shell/exec.c \
+				$(KPATH)/drivers/screen/screen.c
 
 C_OBJS			= $(C_SRCS:.c=.o)
 C_FLAGS			= -W -Wall -Wextra -ffreestanding -c -std=c99 -Isrc/kernel/ 

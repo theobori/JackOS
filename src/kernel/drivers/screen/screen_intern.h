@@ -1,5 +1,5 @@
-#ifndef __PRINT_H__
-    #define __PRINT_H__
+#ifndef __SCREEN_INTERN_H__
+    #define __SCREE_INTERN_H__
 
     #define VGA_ADRESS 0xB8000              // VGA adress start here (for display)
     #define MAX_COLS 80                     // Max number of columns
@@ -25,9 +25,5 @@ enum Colors {                               // IMPORTANT :
     YELLOW,
     WHITE
 };
-
-void kprint_at(const char *str, unsigned short x, unsigned short y, unsigned char color);
-void kprint_at_int_at(const int n, unsigned short x, unsigned short y, unsigned char color);
-void clear_screen(unsigned char color);
 
 #endif
