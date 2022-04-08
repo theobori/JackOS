@@ -12,5 +12,5 @@ void kernel_entry() {
     isr_install();
     __asm__ __volatile__("sti");
     init_timer(50);
-    // init_keyboard();
+    init_keyboard();
 }

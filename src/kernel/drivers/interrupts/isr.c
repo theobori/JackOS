@@ -52,22 +52,22 @@ void isr_install() {
     port_byte_out(0xa1, 0x0); 
 
     // Install the IRQs
-    set_idt_gate(32, IRQ(0));
-    set_idt_gate(33, IRQ(1));
-    set_idt_gate(34, IRQ(2));
-    set_idt_gate(35, IRQ(3));
-    set_idt_gate(36, IRQ(4));
-    set_idt_gate(37, IRQ(5));
-    set_idt_gate(38, IRQ(6));
-    set_idt_gate(39, IRQ(7));
-    set_idt_gate(40, IRQ(8));
-    set_idt_gate(41, IRQ(9));
-    set_idt_gate(42, IRQ(10));
-    set_idt_gate(43, IRQ(11));
-    set_idt_gate(44, IRQ(12));
-    set_idt_gate(45, IRQ(13));
-    set_idt_gate(46, IRQ(14));
-    set_idt_gate(47, IRQ(15));
+    set_idt_gate(32, (unsigned int)irq0);
+    set_idt_gate(33, (unsigned int)irq1);
+    set_idt_gate(34, (unsigned int)irq2);
+    set_idt_gate(35, (unsigned int)irq3);
+    set_idt_gate(36, (unsigned int)irq4);
+    set_idt_gate(37, (unsigned int)irq5);
+    set_idt_gate(38, (unsigned int)irq6);
+    set_idt_gate(39, (unsigned int)irq7);
+    set_idt_gate(40, (unsigned int)irq8);
+    set_idt_gate(41, (unsigned int)irq9);
+    set_idt_gate(42, (unsigned int)irq10);
+    set_idt_gate(43, (unsigned int)irq11);
+    set_idt_gate(44, (unsigned int)irq12);
+    set_idt_gate(45, (unsigned int)irq13);
+    set_idt_gate(46, (unsigned int)irq14);
+    set_idt_gate(47, (unsigned int)irq15);
 
     set_idt();                                      // Load all the idt into memory
 }
@@ -120,11 +120,11 @@ char *exception_messages[] = {
 void isr_handler(registers_t r)
 {
     static int y = 0;
-    // kprint("received interrupt: ", 0, y++, SET_COLOR(WHITE, BLACK));
-    // char s[3];
-    // itoa(r.int_no, s);
-    // kprint(s, 0, 1, SET_COLOR(WHITE, BLACK));
-    // kprint(exception_messages[r.int_no], 0, 2 + y++, SET_COLOR(WHITE, BLACK));
+    kprint("received interrupt: ", 0, y++, SET_COLOR(WHITE, BLACK));
+    char s[3];
+    itoa(r.int_no, s);
+    kprint(s, 0, 1, SET_COLOR(WHITE, BLACK));
+    kprint(exception_messages[r.int_no], 0, 2 + y++, SET_COLOR(WHITE, BLACK));
 }
 
 void register_interrupt_handler(unsigned char n, isr_t handler) {
