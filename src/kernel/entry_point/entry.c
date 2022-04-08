@@ -9,6 +9,9 @@
  */
 void kernel_entry() {
     clear_screen(SET_COLOR(WHITE, BLACK));
-    kprint("Hello, kernel!", 0, 1, SET_COLOR(RED, WHITE));
-    kprint_int(42, 0, 2, SET_COLOR(GREEN, WHITE));
+    isr_install();
+    __asm__ __volatile__("sti");
+    init_timer(50);
+    init_keyboard();
+    shell_init();
 }
