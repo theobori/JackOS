@@ -5,5 +5,6 @@
     #include "drivers/interrupts/isr.h"
     #include "drivers/interrupts/timer.h"
     #include "drivers/keyboard.h"
+    #include "shell/shell.h"
 
 #endif

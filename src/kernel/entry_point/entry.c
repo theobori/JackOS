@@ -13,4 +13,5 @@ void kernel_entry() {
     __asm__ __volatile__("sti");
     init_timer(50);
     init_keyboard();
+    shell_init();
 }

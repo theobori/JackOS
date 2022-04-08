@@ -3,6 +3,7 @@
 
     #include "interrupts/isr.h"
     #include "utils/print.h"
+    #include "shell/shell.h"
 
 enum BiosKeyboardKey {
     ERROR,                      // Case of problem
@@ -10,7 +11,7 @@ enum BiosKeyboardKey {
     _1,_2,_3,_4,_5,_6,_7,_8,_9,_0,
     MINUS,
     PLUS,
-    BACKSPACE,                  // Enter key
+    BACKSPACE,
     TAB,
     Q,W,E,R,T,Y,U,I,O,P,
     LBRACKET, RBRACKET,

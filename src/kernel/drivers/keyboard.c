@@ -6,7 +6,7 @@
  * @param scancode : code of the char being pressed (QWERTY)
  * @return char : char being pressed
  */
-char get_char_pressed(unsigned char scancode)
+static char get_char_pressed(unsigned char scancode)
 {
     char key_pressed_char[58] = {
         ' ', ' ', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '+', '\b',
@@ -15,7 +15,7 @@ char get_char_pressed(unsigned char scancode)
         '\\', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', ' ', ' ', ' ', ' '
     };
     if (scancode > 58)
-        return (' ');
+        return (0);
     return (key_pressed_char[scancode]);
 }
 
@@ -28,10 +28,7 @@ char get_char_pressed(unsigned char scancode)
 static void keyboard_callback(registers_t regs)
 {
     unsigned char scancode = port_byte_in(0x60);
-    char string[2] = {get_char_pressed(scancode), 0};
-    kprint("Keyboard scancode: ", 0, 4, SET_COLOR(WHITE, BLACK));
-    kprint_int(scancode, 0, 5, SET_COLOR(WHITE, BLACK));
-    kprint(string, 0, 6, SET_COLOR(WHITE, BLACK));
+    shell_input(get_char_pressed(scancode));
 }
 
 /**

@@ -3,14 +3,14 @@
 /**
  * @brief 
  * 
- * kprint exist to print strings into the VGA screen.
+ * kprint_at exist to print strings into the VGA screen.
  * 
  * @param str : string to print
  * @param x : x position
  * @param y : y position
  * @param color : color of the text
  */
-void kprint(const char *str, unsigned short x, unsigned short y, unsigned char color)
+void kprint_at(const char *str, unsigned short x, unsigned short y, unsigned char color)
 {
     char *video_memory = (char *) VGA_ADRESS;
 
@@ -42,7 +42,7 @@ void clear_screen(unsigned char color)
 /**
  * @brief 
  * 
- * kprint_int exist to print an integer into the VGA screen.
+ * kprint_at_int_at exist to print an integer into the VGA screen.
  * convert n into ascii char
  * 
  * @param n : integer to print
@@ -50,7 +50,7 @@ void clear_screen(unsigned char color)
  * @param y : y position
  * @param color : color of the text
  */
-void kprint_int(const int n, unsigned short x, unsigned short y, unsigned char color)
+void kprint_at_int_at(const int n, unsigned short x, unsigned short y, unsigned char color)
 {
     char *video_memory = (char *) VGA_ADRESS;
     char str[10];
@@ -61,5 +61,5 @@ void kprint_int(const int n, unsigned short x, unsigned short y, unsigned char c
         str[i--] = replicate % 10 + '0';
         replicate /= 10;
     } while (replicate);
-    kprint(str + i + 1, x, y, color);
+    kprint_at(str + i + 1, x, y, color);
 }

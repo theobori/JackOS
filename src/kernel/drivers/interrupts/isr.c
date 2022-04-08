@@ -120,11 +120,11 @@ char *exception_messages[] = {
 void isr_handler(registers_t r)
 {
     static int y = 0;
-    kprint("received interrupt: ", 0, y++, SET_COLOR(WHITE, BLACK));
+    kprint_at("received interrupt: ", 0, y++, SET_COLOR(WHITE, BLACK));
     char s[3];
     itoa(r.int_no, s);
-    kprint(s, 0, 1, SET_COLOR(WHITE, BLACK));
-    kprint(exception_messages[r.int_no], 0, 2 + y++, SET_COLOR(WHITE, BLACK));
+    kprint_at(s, 0, 1, SET_COLOR(WHITE, BLACK));
+    kprint_at(exception_messages[r.int_no], 0, 2 + y++, SET_COLOR(WHITE, BLACK));
 }
 
 void register_interrupt_handler(unsigned char n, isr_t handler) {

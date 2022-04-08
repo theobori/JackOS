@@ -9,6 +9,8 @@ C_SRCS			= $(KPATH)/entry_point/entry.c \
 				$(KPATH)/drivers/ports.c \
 				$(KPATH)/drivers/interrupts/timer.c \
 				$(KPATH)/drivers/keyboard.c \
+				$(KPATH)/shell/shell.c \
+				$(KPATH)/shell/clear.c
 
 C_OBJS			= $(C_SRCS:.c=.o)
 C_FLAGS			= -ffreestanding -c -std=c99 -Isrc/kernel/ 

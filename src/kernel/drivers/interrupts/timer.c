@@ -10,8 +10,8 @@ unsigned int tick = 0;
 static void timer_callback(registers_t regs)
 {
     tick++;
-    kprint("Tick: ", 0, 0, SET_COLOR(WHITE, GREEN));
-    kprint_int(tick, 10, 0, SET_COLOR(WHITE, GREEN));
+    // kprint_at("Tick: ", 0, 0, SET_COLOR(WHITE, GREEN));
+    // kprint_at_int_at(tick, 10, 0, SET_COLOR(WHITE, GREEN));
 }
 
 /**
