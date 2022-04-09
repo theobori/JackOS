@@ -1,9 +1,9 @@
 #include "exec.h"
 
 /**
- * @brief 
+ * @brief function that must execute all commands that the user input in the shell
  * 
- * @param cmd 
+ * @param cmd : the command to be executed
  */
 void exec(const char *cmd)
 {

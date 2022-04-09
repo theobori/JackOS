@@ -1,5 +1,12 @@
 #include "strcmp.h"
 
+/**
+ * @brief function that compares two strings
+ * 
+ * @param s1 : the first string
+ * @param s2 : the second string
+ * @return int : 1 if the strings are equal, 0 otherwise
+ */
 int strcmp(const char *s1, const char *s2)
 {
     int i = 0;
