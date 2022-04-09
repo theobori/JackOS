@@ -11,7 +11,7 @@ static void timer_callback(__attribute__((unused))registers_t regs)
 {
     tick++;
     // kprint_at("Tick: ", 0, 0, SET_COLOR(WHITE, GREEN));
-    // kprint_at_int_at(tick, 10, 0, SET_COLOR(WHITE, GREEN));
+    // kprint_int_at(tick, 10, 0, SET_COLOR(WHITE, GREEN));
 }
 
 /**

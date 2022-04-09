@@ -42,7 +42,7 @@ void clear_screen(unsigned char color)
 /**
  * @brief 
  * 
- * kprint_at_int_at exist to print an integer into the VGA screen.
+ * kprint_int_at exist to print an integer into the VGA screen.
  * convert n into ascii char
  * 
  * @param n : integer to print
@@ -50,7 +50,7 @@ void clear_screen(unsigned char color)
  * @param y : y position
  * @param color : color of the text
  */
-void kprint_at_int_at(const int n, unsigned short x, unsigned short y, unsigned char color)
+void kprint_int_at(const int n, unsigned short x, unsigned short y, unsigned char color)
 {
     char str[10];
     int i = 9;

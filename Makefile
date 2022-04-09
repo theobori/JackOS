@@ -1,8 +1,9 @@
 KPATH			= src/kernel
 C_SRCS			= $(KPATH)/entry_point/entry.c \
-				$(KPATH)/utils/itoa.c \
-				$(KPATH)/utils/strlen.c \
-				$(KPATH)/utils/strrev.c \
+				$(KPATH)/utils/string/itoa.c \
+				$(KPATH)/utils/string/strlen.c \
+				$(KPATH)/utils/string/strrev.c \
+				$(KPATH)/utils/memory/malloc.c \
 				$(KPATH)/drivers/interrupts/idt.c \
 				$(KPATH)/drivers/interrupts/isr.c \
 				$(KPATH)/drivers/ports.c \

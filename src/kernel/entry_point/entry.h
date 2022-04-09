@@ -6,5 +6,6 @@
     #include "drivers/interrupts/timer.h"
     #include "drivers/keyboard.h"
     #include "shell/shell.h"
+    #include "utils/memory.h"
 
 #endif
