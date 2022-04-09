@@ -3,6 +3,6 @@
 
     #include "strlen.h"
 
-void reverse(char s[]);
+void strrev(char *s);
 
 #endif

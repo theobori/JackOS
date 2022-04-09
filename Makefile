@@ -3,15 +3,21 @@ C_SRCS			= $(KPATH)/entry_point/entry.c \
 				$(KPATH)/utils/string/itoa.c \
 				$(KPATH)/utils/string/strlen.c \
 				$(KPATH)/utils/string/strrev.c \
+				$(KPATH)/utils/string/strcmp.c \
+				$(KPATH)/utils/string/upper.c \
+				$(KPATH)/utils/string/split.c \
+				$(KPATH)/utils/string/in.c \
+				$(KPATH)/utils/string/strcpy.c \
 				$(KPATH)/utils/memory/malloc.c \
 				$(KPATH)/drivers/interrupts/idt.c \
 				$(KPATH)/drivers/interrupts/isr.c \
 				$(KPATH)/drivers/ports.c \
 				$(KPATH)/drivers/interrupts/timer.c \
-				$(KPATH)/drivers/keyboard.c \
+				$(KPATH)/drivers/keyboard/keyboard.c \
 				$(KPATH)/shell/shell.c \
 				$(KPATH)/shell/clear.c \
 				$(KPATH)/shell/exec.c \
+				$(KPATH)/shell/builtin_commands/setxkbmap.c \
 				$(KPATH)/drivers/screen/screen.c
 
 C_OBJS			= $(C_SRCS:.c=.o)
