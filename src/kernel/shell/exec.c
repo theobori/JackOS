@@ -12,11 +12,13 @@ void exec(const char *cmd)
     char *command_name[] = {
         "setxkbmap",
         "help",
+        "clear",
         NULL
     };
     void (*command_functions[])(char **) = {
         &setxkbmap,
         &help,
+        &clear,
         NULL
     };
     int cmd_found = 0;
