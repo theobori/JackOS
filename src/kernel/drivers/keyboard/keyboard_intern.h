@@ -2,7 +2,7 @@
     #define __KEYBOARD_INTERN_H__
 
     #include "drivers/interrupts/isr.h"
-    #include "drivers/screen/screen.h"
+    #include "drivers/screen.h"
     #include "shell/shell.h"
     #include "utils/string.h"
     #include "drivers/keyboard.h"

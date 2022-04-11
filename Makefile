@@ -18,6 +18,7 @@ C_SRCS			= $(KPATH)/entry_point/entry.c \
 				$(KPATH)/shell/clear.c \
 				$(KPATH)/shell/exec.c \
 				$(KPATH)/shell/builtin_commands/setxkbmap.c \
+				$(KPATH)/shell/builtin_commands/help.c \
 				$(KPATH)/drivers/screen/screen.c
 
 C_OBJS			= $(C_SRCS:.c=.o)
