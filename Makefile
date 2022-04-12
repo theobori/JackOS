@@ -6,6 +6,7 @@ C_SRCS			= $(KPATH)/entry_point/entry.c \
 				$(KPATH)/utils/string/strcmp.c \
 				$(KPATH)/utils/string/upper.c \
 				$(KPATH)/utils/string/split.c \
+				$(KPATH)/utils/string/strncpy.c \
 				$(KPATH)/utils/string/in.c \
 				$(KPATH)/utils/string/strcpy.c \
 				$(KPATH)/utils/memory/malloc.c \

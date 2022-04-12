@@ -1,6 +1,8 @@
 #ifndef __STRING_H__
     #define __STRING_H__
 
+    #include <stddef.h> 
+
 /*
 **          String Functions public API
 ** this is all string managements function that you can use.
@@ -15,5 +17,6 @@ void upper(char *str);
 char **split(const char *str, const char *sep);
 int in(char c, const char *str);
 void strcpy(char *dest, const char *src);
+void strncpy(char *dest, const char *src, size_t n);
 
 #endif
