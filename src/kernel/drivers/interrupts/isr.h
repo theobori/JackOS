@@ -2,7 +2,7 @@
     #define __ISR_H__
 
     #include "idt.h"
-    #include "drivers/screen/screen.h"
+    #include "drivers/screen.h"
     #include "utils/string.h"
     #include "../ports.h"
 
