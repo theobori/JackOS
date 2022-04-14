@@ -28,7 +28,7 @@ enum BiosKeyboardKey {
     RSHIFT,
     KEYPAD_STAR,                // ???
     LALT,
-    SPC,                        // ???
+    SPC,                        // Space
 };
 
 void init_keyboard();

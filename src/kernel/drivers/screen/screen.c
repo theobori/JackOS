@@ -1,5 +1,25 @@
 #include "screen_intern.h"
 
+void move_view(int offset)
+{
+    char *video_memory = (char *)VGA_ADRESS;
+
+    if (offset > 0) {
+        for (int i = 0; i < MAX_ROWS - offset; ++i) {
+            for (int j = 0; j < MAX_COLS; ++j) {
+                video_memory[(i * MAX_COLS + j) * 2] = video_memory[((i + offset) * MAX_COLS + j) * 2];
+                video_memory[(i * MAX_COLS + j) * 2 + 1] = video_memory[((i + offset) * MAX_COLS + j) * 2 + 1];
+            }
+        }
+        for (int i = MAX_ROWS - offset; i < MAX_ROWS; ++i) {
+            for (int j = 0; j < MAX_COLS; ++j) {
+                video_memory[(i * MAX_COLS + j) * 2] = ' ';
+                video_memory[(i * MAX_COLS + j) * 2 + 1] = 0;
+            }
+        }
+    }
+}
+
 /**
  * @brief 
  * 
@@ -13,7 +33,12 @@
 void kprint_at(const char *str, unsigned short x, unsigned short y, unsigned char color)
 {
     char *video_memory = (char *) VGA_ADRESS;
+    int offset = y - MAX_ROWS;
 
+    if (y > MAX_ROWS) {
+        move_view(offset);
+        y -= offset;
+    }
     for (int i = 0; str[i]; ++i) {
         video_memory[(y * MAX_COLS + x + i) * 2] = str[i];
         video_memory[(y * MAX_COLS + x + i) * 2 + 1] = color;
