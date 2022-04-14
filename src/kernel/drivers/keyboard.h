@@ -1,9 +1,7 @@
 #ifndef __KEYBOARD_DRIVER_H__
     #define __KEYBOARD_DRIVER_H__
 
-    #include "interrupts/isr.h"
-    #include "drivers/screen/screen.h"
-    #include "shell/shell.h"
+    #define NB_CHAR 58
 
 enum BiosKeyboardKey {
     ERROR,                      // Case of problem
@@ -34,5 +32,6 @@ enum BiosKeyboardKey {
 };
 
 void init_keyboard();
+void change_lang(const char *lang);
 
 #endif

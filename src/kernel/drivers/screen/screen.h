@@ -30,7 +30,7 @@ enum Colors {                               // IMPORTANT :
 };
 
 void kprint_at(const char *str, unsigned short x, unsigned short y, unsigned char color);
-void kprint_at_int_at(const int n, unsigned short x, unsigned short y, unsigned char color);
+void kprint_int_at(const int n, unsigned short x, unsigned short y, unsigned char color);
 void clear_screen(unsigned char color);
 
 #endif
