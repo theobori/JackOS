@@ -81,18 +81,18 @@ static int get_vbe_info()
  * @param bpp : bits per pixel
  * @return int : 0 if success, -1 if failed
  */
-static int vesa_init(Daniel_t *this, u32 width, u32 height, u32 bpp)
+static int vesa_init(u32 width, u32 height, u32 bpp)
 {
     bios32_init();
     if (!get_vbe_info())
         return (-1);
-    this->g_selected_mode = vbe_find_mode(width, height, bpp);
-    if (this->g_selected_mode == -1)
+    GUI.g_selected_mode = vbe_find_mode(width, height, bpp);
+    if (GUI.g_selected_mode == -1)
         return (-1);
-    this->g_width = vbe_mode_info.XResolution;
-    this->g_height = vbe_mode_info.YResolution;
-    this->g_vbe_buffer = (u32 *)vbe_mode_info.PhysBasePtr;
-    vbe_set_mode(this->g_selected_mode);
+    GUI.g_width = vbe_mode_info.XResolution;
+    GUI.g_height = vbe_mode_info.YResolution;
+    GUI.g_vbe_buffer = (u32 *)vbe_mode_info.PhysBasePtr;
+    vbe_set_mode(GUI.g_selected_mode);
     return (0);
 }
 
@@ -101,13 +101,13 @@ static int vesa_init(Daniel_t *this, u32 width, u32 height, u32 bpp)
  * 
  * @param this : the gui
  */
-void init_daniel(Daniel_t *this)
+void init_daniel()
 {
-    this->g_selected_mode = -1;
-    this->put_pixel = &daniel_putpixel;
-    this->g_vbe_buffer = 0;
-    this->g_width = 0;
-    this->g_height = 0;
+    GUI.g_selected_mode = -1;
+    GUI.put_pixel = &daniel_putpixel;
+    GUI.g_vbe_buffer = 0;
+    GUI.g_width = 0;
+    GUI.g_height = 0;
 
-    vesa_init(this, 800, 600, 32);
+    vesa_init(800, 600, 32);
 }

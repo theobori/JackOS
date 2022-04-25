@@ -7,8 +7,8 @@
  * @param y 
  * @param color 
  */
-void daniel_putpixel(Daniel_t *this, int x, int y, u32 color)
+void daniel_putpixel(int x, int y, u32 color)
 {
-    u32 i = y * this->g_width + x;
-    *(this->g_vbe_buffer + i) = color;
+    u32 i = y * GUI.g_width + x;
+    *(GUI.g_vbe_buffer + i) = color;
 }

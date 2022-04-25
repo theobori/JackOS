@@ -6,11 +6,17 @@
  */
 void kmain()
 {
-    Daniel_t gui;
     gdt_init();
     isr_install();
     init_timer(50);
+    init_daniel();
     init_keyboard();
+    init_mouse();
     shell_init();
-    init_daniel(&gui);
+
+    for (int i = 0; i < 100; i++) {
+        for (int j = 0; j < 100; j++) {
+            GUI.put_pixel(i, j, D_LIGHT_CYAN);
+        }
+    }
 }

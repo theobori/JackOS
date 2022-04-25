@@ -8,7 +8,7 @@
  * @param n : number of bytes to copy
  * @return void* : destination
  */
-void *memcpy(void *dst, const void *src, u32 n)
+void *memcpy(void *dst, const void *src, size_t n)
 {
     char *ret = dst;
     char *p = dst;

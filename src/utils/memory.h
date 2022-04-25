@@ -1,7 +1,6 @@
 #ifndef __UTILS_MEMORY_H__
     #define __UTILS_MEMORY_H__
 
-    #include <stddef.h>
     #include "types.h"
 
 /*
@@ -12,6 +11,7 @@
 */
 
 void *malloc(size_t size);
-void *memcpy(void *dst, const void *src, u32 n);
+void *memcpy(void *dst, const void *src, size_t n);
+void memset(void *dst, char c, size_t n);
 
 #endif

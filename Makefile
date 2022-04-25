@@ -20,6 +20,7 @@ C_SRC			= src/kernel.c \
 				src/bios/protected/bios32.c \
 				$(UTILS_PATH)/memory/malloc.c \
 				$(UTILS_PATH)/memory/memcpy.c \
+				$(UTILS_PATH)/memory/memset.c \
 				$(UTILS_PATH)/string/in.c \
 				$(UTILS_PATH)/string/itoa.c \
 				$(UTILS_PATH)/string/split.c \
@@ -35,6 +36,7 @@ C_SRC			= src/kernel.c \
 				$(DRIVERS_PATH)/conn/timer.c \
 				$(DRIVERS_PATH)/screen/screen.c \
 				$(DRIVERS_PATH)/keyboard/keyboard.c \
+				$(DRIVERS_PATH)/mouse/mouse.c \
 				$(SHELL_PATH)/clear.c \
 				$(SHELL_PATH)/exec.c \
 				$(SHELL_PATH)/shell.c \

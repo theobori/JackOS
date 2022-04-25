@@ -5,6 +5,6 @@
     #include "intern.h"
     #include "../GUI.h"
 
-void daniel_putpixel(Daniel_t *this, int x, int y, u32 color);
+void daniel_putpixel(int x, int y, u32 color);
 
 #endif

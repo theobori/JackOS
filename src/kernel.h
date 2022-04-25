@@ -6,6 +6,7 @@
     #include "gdt.h"
     #include "interrupts/isr.h"
     #include "drivers/keyboard.h"
+    #include "drivers/mouse.h"
     #include "shell/shell.h"
     #include "drivers/conn/timer.h"
     #include "GUI/GUI.h"

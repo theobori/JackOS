@@ -3,6 +3,6 @@
 
     #include "types.h"
 
-void *memcpy(void *dst, const void *src, u32 n);
+void *memcpy(void *dst, const void *src, size_t n);
 
 #endif

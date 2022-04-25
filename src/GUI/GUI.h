@@ -34,10 +34,12 @@ typedef enum Daniel_color_e {
 typedef struct Daniel_s {
     int g_selected_mode;
     u32 *g_vbe_buffer;
-    void (*put_pixel)(struct Daniel_s *this, int x, int y, u32 color);
+    void (*put_pixel)(int x, int y, u32 color);
     u32 g_width, g_height;
 } Daniel_t;
 
-void init_daniel(Daniel_t *this);
+Daniel_t GUI;
+
+void init_daniel();
 
 #endif
