@@ -5,6 +5,12 @@
 
     #define NO_GDT_DESCRIPTORS     8
 
+typedef struct base_s {
+    u16 low;
+    u8 middle;
+    u8 high;
+} base_t;
+
 typedef struct {
     u16 segment_limit;              // segment limit first 0-15 bits
     u16 base_low;                   // base first 0-15 bits
@@ -24,7 +30,7 @@ GDT_PTR g_gdt_ptr;
 
 extern void load_gdt(u32 gdt_ptr);
 
-void gdt_set_entry(int index, u32 base, u32 limit, u8 access, u8 gran);
+void gdt_set_entry(int index, base_t base, u32 limit, u8 access, u8 gran);
 void gdt_init();
 
 #endif

@@ -1,11 +1,10 @@
 #include "isr.h"
 
 /**
- * @brief set all the handler to the idt (handler are in interrupts.asm)
- * We cannot do loop because we need adress of them
+ * @brief Initialize IDT gates
  * 
  */
-void isr_install()
+static void idt_gate_install()
 {
     set_idt_gate(0, (u32)isr0);
     set_idt_gate(1, (u32)isr1);
@@ -40,8 +39,14 @@ void isr_install()
     set_idt_gate(30, (u32)isr30);
     set_idt_gate(31, (u32)isr31);
     set_idt_gate(128, (u32)isr128);
+}
 
-    // Remap the PIC
+/**
+ * @brief remapping pic gates
+ * 
+ */
+static void pic_remap()
+{
     port_byte_out(0x20, 0x11);
     port_byte_out(0xa0, 0x11);
     port_byte_out(0x21, 0x20);
@@ -52,8 +57,14 @@ void isr_install()
     port_byte_out(0xa1, 0x01);
     port_byte_out(0x21, port_byte_in(0x20));
     port_byte_out(0xa1, port_byte_in(0xa0)); 
+}
 
-    // Install the IRQs
+/**
+ * @brief Initialize interrupt gates
+ * 
+ */
+static void irq_install()
+{
     set_idt_gate(32, (u32)irq0);
     set_idt_gate(33, (u32)irq1);
     set_idt_gate(34, (u32)irq2);
@@ -70,12 +81,23 @@ void isr_install()
     set_idt_gate(45, (u32)irq13);
     set_idt_gate(46, (u32)irq14);
     set_idt_gate(47, (u32)irq15);
+}
 
+/**
+ * @brief set all the handler to the idt (handler are in interrupts.asm)
+ * We cannot do loop because we need adress of them
+ * 
+ */
+void isr_install()
+{
+    idt_gate_install();
+    pic_remap();
+    irq_install();
     set_idt();                                      // Load all the idt into memory
     __asm__ __volatile__("sti");                    // Enable interrupts
 }
 
-// Temp
+// temp
 char *exception_messages[] = {
     "Division By Zero",
     "Debug",
@@ -147,12 +169,9 @@ void register_interrupt_handler(unsigned char n, isr_h handler) {
  */
 void irq_handler(registers_t r)
 {
-    if (r.int_no >= 40) {                       // After every interrupt we need to send an EOI to the PICs or they will not send another interrupt again
-        port_byte_out(0xA0, 0x20);              // slave
-    }
-    port_byte_out(0x20, 0x20);                  // master
-    if (interrupt_handlers[r.int_no] != 0) {    // Handle the interrupt in a more modular way
-        isr_h handler = interrupt_handlers[r.int_no];
-        handler(r);
-    }
+    if (r.int_no >= 40)                         // After every interrupt we need to send an EOI to the PICs or they will not send another interrupt again
+        port_byte_out(0xa0, 0x20);              // Slave
+    port_byte_out(0x20, 0x20);                  // Master
+    if (interrupt_handlers[r.int_no])           // Handle the interrupt in a more modular way
+        interrupt_handlers[r.int_no](r);
 }

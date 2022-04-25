@@ -19,7 +19,7 @@ extern void *bios32_in_reg16_ptr;
 extern void *bios32_out_reg16_ptr;
 extern void *bios32_int_number_ptr;
 
-idt_register_t gdt32;
+GDT_PTR gdt32;
 idt_register_t idt32;
 
 extern GDT g_gdt[NO_GDT_DESCRIPTORS];

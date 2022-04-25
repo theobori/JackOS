@@ -14,9 +14,4 @@ void kmain()
     init_mouse();
     shell_init();
 
-    for (int i = 0; i < 100; i++) {
-        for (int j = 0; j < 100; j++) {
-            GUI.put_pixel(i, j, D_LIGHT_CYAN);
-        }
-    }
 }

@@ -63,13 +63,10 @@ static void vbe_set_mode(u32 mode)
 static int get_vbe_info()
 {
     registers_16_t in = {0}, out = {0};
-    // set specific value 0x4F00 in ax to get vbe info into bios memory area
-    in.ax = 0x4F00;
-    // set address pointer to BIOS_CONVENTIONAL_MEMORY where vbe info struct will be stored
-    in.di = BIOS_CONVENTIONAL_MEMORY;
-    int86(0x10, &in, &out);  // call video interrupt 0x10
-    // copy vbe info data to our global variable g_vbe_infoblock
-    memcpy(&g_vbe_infoblock, (void *)BIOS_CONVENTIONAL_MEMORY, sizeof(VBE20_INFOBLOCK));
+    in.ax = 0x4F00;                                                                                 // set specific value 0x4F00 in ax to get vbe info into bios memory area
+    in.di = BIOS_CONVENTIONAL_MEMORY;                                                               // set address pointer to BIOS_CONVENTIONAL_MEMORY where vbe info struct will be stored
+    int86(0x10, &in, &out);                                                                         // call video interrupt 0x10
+    memcpy(&g_vbe_infoblock, (void *)BIOS_CONVENTIONAL_MEMORY, sizeof(VBE20_INFOBLOCK));            // copy vbe info data to our global variable g_vbe_infoblock
     return (out.ax == 0x4F);
 }
 
@@ -105,6 +102,7 @@ void init_daniel()
 {
     GUI.g_selected_mode = -1;
     GUI.put_pixel = &daniel_putpixel;
+    GUI.draw_square = &daniel_draw_square;
     GUI.g_vbe_buffer = 0;
     GUI.g_width = 0;
     GUI.g_height = 0;

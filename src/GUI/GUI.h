@@ -35,6 +35,7 @@ typedef struct Daniel_s {
     int g_selected_mode;
     u32 *g_vbe_buffer;
     void (*put_pixel)(int x, int y, u32 color);
+    void (*draw_square)(u16 x, u16 y, u16 size, u32 color);
     u32 g_width, g_height;
 } Daniel_t;
 
