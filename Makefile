@@ -80,3 +80,4 @@ re: fclean all
 
 %.o: %.asm
 	$(NASM) $(ASM_FLAGS) -o $@ $<
+
