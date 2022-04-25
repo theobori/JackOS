@@ -1,69 +1,82 @@
-KPATH			= src/kernel
-C_SRCS			= $(KPATH)/entry_point/entry.c \
-				$(KPATH)/utils/string/itoa.c \
-				$(KPATH)/utils/string/strlen.c \
-				$(KPATH)/utils/string/strrev.c \
-				$(KPATH)/utils/string/strcmp.c \
-				$(KPATH)/utils/string/upper.c \
-				$(KPATH)/utils/string/split.c \
-				$(KPATH)/utils/string/strncpy.c \
-				$(KPATH)/utils/string/in.c \
-				$(KPATH)/utils/string/strcpy.c \
-				$(KPATH)/utils/memory/malloc.c \
-				$(KPATH)/drivers/interrupts/idt.c \
-				$(KPATH)/drivers/interrupts/isr.c \
-				$(KPATH)/drivers/ports.c \
-				$(KPATH)/drivers/interrupts/timer.c \
-				$(KPATH)/drivers/keyboard/keyboard.c \
-				$(KPATH)/shell/shell.c \
-				$(KPATH)/shell/clear.c \
-				$(KPATH)/shell/exec.c \
-				$(KPATH)/shell/builtin_commands/setxkbmap.c \
-				$(KPATH)/shell/builtin_commands/help.c \
-				$(KPATH)/shell/builtin_commands/clear.c \
-				$(KPATH)/drivers/screen/screen.c
+CC				= i386-elf-gcc
+NASM			= nasm
+LD				= i386-elf-ld
+QEMU 			= qemu-system-x86_64
+GRUB			= /usr/bin/grub-mkrescue
 
-C_OBJS			= $(C_SRCS:.c=.o)
-C_FLAGS			= -W -Wall -Wextra -ffreestanding -c -std=c99 -Isrc/kernel/ 
+C_FLAGS 		= -W -Wall -Wextra -ffreestanding -std=c99 -Isrc
+LD_FLAGS 		= -T config/linker.ld -nostdlib -m elf_i386
+ASM_FLAGS 		= -f elf32
+QEMU_FLAGS		=
 
-ASM_SRC			= src/boot/kernel_entry.asm
-ASM_OBJ			= $(ASM_SRC:.asm=.o)
-ASM_FLAGS		= -f elf
+UTILS_PATH		= src/utils
+SHELL_PATH		= src/shell
+DRIVERS_PATH	= src/drivers
+DANIEL_PATH		= src/GUI
+C_SRC			= src/kernel.c \
+				src/gdt.c \
+				$(DANIEL_PATH)/lib/init.c \
+				$(DANIEL_PATH)/lib/put_pixel.c \
+				$(DANIEL_PATH)/lib/draw_square.c \
+				src/bios/protected/bios32.c \
+				$(UTILS_PATH)/memory/malloc.c \
+				$(UTILS_PATH)/memory/memcpy.c \
+				$(UTILS_PATH)/memory/memset.c \
+				$(UTILS_PATH)/string/in.c \
+				$(UTILS_PATH)/string/itoa.c \
+				$(UTILS_PATH)/string/split.c \
+				$(UTILS_PATH)/string/strcmp.c \
+				$(UTILS_PATH)/string/strcpy.c \
+				$(UTILS_PATH)/string/strlen.c \
+				$(UTILS_PATH)/string/strncpy.c \
+				$(UTILS_PATH)/string/strrev.c \
+				$(UTILS_PATH)/string/upper.c \
+				src/interrupts/isr.c \
+				src/interrupts/idt.c \
+				$(DRIVERS_PATH)/conn/ports.c \
+				$(DRIVERS_PATH)/conn/timer.c \
+				$(DRIVERS_PATH)/screen/screen.c \
+				$(DRIVERS_PATH)/keyboard/keyboard.c \
+				$(DRIVERS_PATH)/mouse/mouse.c \
+				$(SHELL_PATH)/clear.c \
+				$(SHELL_PATH)/exec.c \
+				$(SHELL_PATH)/shell.c \
+				$(SHELL_PATH)/builtin_commands/help.c \
+				$(SHELL_PATH)/builtin_commands/setxkbmap.c \
+				$(SHELL_PATH)/builtin_commands/clear.c \
 
-KERNEL_BIN		= kernel.bin
-LD_FLAGS		= -Ttext 0x1000 --oformat binary
+ASM_PATH		= src/asm
+ASM_SRC			= $(ASM_PATH)/entry.asm \
+				$(ASM_PATH)/load_gdt.asm \
+				$(ASM_PATH)/load_idt.asm \
+				$(ASM_PATH)/irq.asm \
+				$(ASM_PATH)/isr.asm \
+				$(ASM_PATH)/bios32_call.asm
 
-BOOT_SECT_SRC	= src/boot/boot_sector.asm
-BOOT_SECT_NAME	= $(BOOT_SECT_SRC:.asm=.bin)
+OBJ 			= $(C_SRC:.c=.o) $(ASM_SRC:.asm=.o)
+TARGET_BIN		= boot/JackOS.bin
+TARGET_ISO		= $(TARGET_BIN:.bin=.iso)
 
-QEMU_FLAGS		= -fda
-IMAGE_NAME		= os-image.bin
+all: build
 
-all: image
+build: $(OBJ)
+	$(LD) $(LD_FLAGS) -o $(TARGET_BIN) $(OBJ)
+	$(GRUB) -o $(TARGET_ISO) .
 
-kernel: $(C_OBJS) $(ASM_OBJ) $(KPATH)/drivers/interrupts/interrupts.o
-	i386-elf-ld -o $(KERNEL_BIN) $(LD_FLAGS) $(ASM_OBJ) $(C_OBJS) $(KPATH)/drivers/interrupts/interrupts.o
-
-image: $(BOOT_SECT_NAME) kernel
-	cat $(BOOT_SECT_NAME) $(KERNEL_BIN) > $(IMAGE_NAME)
-
-run: image
-	qemu-system-x86_64 $(QEMU_FLAGS) $(IMAGE_NAME)
+run: re
+	$(QEMU) $(QEMU_FLAGS) $(TARGET_ISO)
 
 clean:
-	$(RM) $(C_OBJS) $(ASM_OBJ) $(KERNEL_BIN) $(BOOT_SECT_NAME)
-	$(RM) $(KPATH)/drivers/interrupts/interrupts.o
+	$(RM) $(OBJ)
 
 fclean: clean
-	$(RM) $(IMAGE_NAME)
+	$(RM) $(TARGET_BIN)
+	$(RM) $(TARGET_ISO)
 
 re: fclean all
 
 %.o: %.c
-	i386-elf-gcc $(C_FLAGS) $< -o $@
+	$(CC) -c $(C_FLAGS) -o $@ $<
 
 %.o: %.asm
-	nasm $(ASM_FLAGS) $< -o $@
-
-%.bin: %.asm
-	nasm -f bin $< -o $@
+	$(NASM) $(ASM_FLAGS) -o $@ $<
