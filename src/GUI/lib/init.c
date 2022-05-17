@@ -103,6 +103,7 @@ void init_daniel()
     GUI.g_selected_mode = -1;
     GUI.put_pixel = &daniel_putpixel;
     GUI.draw_square = &daniel_draw_square;
+    GUI.draw_char = &daniel_draw_char_at_pos;
     GUI.g_vbe_buffer = 0;
     GUI.g_width = 0;
     GUI.g_height = 0;

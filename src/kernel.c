@@ -13,5 +13,4 @@ void kmain()
     init_keyboard();
     init_mouse();
     shell_init();
-
 }

@@ -18,6 +18,7 @@ C_SRC			= src/kernel.c \
 				$(DANIEL_PATH)/lib/init.c \
 				$(DANIEL_PATH)/lib/put_pixel.c \
 				$(DANIEL_PATH)/lib/draw_square.c \
+				$(DANIEL_PATH)/lib/draw_char.c \
 				src/bios/protected/bios32.c \
 				$(UTILS_PATH)/memory/malloc.c \
 				$(UTILS_PATH)/memory/memcpy.c \
