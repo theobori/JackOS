@@ -103,10 +103,10 @@ void init_daniel()
     GUI.g_selected_mode = -1;
     GUI.put_pixel = &daniel_putpixel;
     GUI.draw_square = &daniel_draw_square;
-    GUI.draw_char = &daniel_draw_char_at_pos;
+    GUI.draw_char_at_pos = &daniel_draw_char_at_pos;
     GUI.g_vbe_buffer = 0;
     GUI.g_width = 0;
     GUI.g_height = 0;
 
-    vesa_init(800, 600, 32);
+    vesa_init(WINDOW_W, WINDOW_H, 32);
 }

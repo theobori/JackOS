@@ -2,6 +2,7 @@
     #define __KEYBOARD_DRIVER_H__
 
     #define NB_CHAR 58
+    #include "GUI/GUI.h"
 
 enum BiosKeyboardKey {
     ERROR,                      // Case of problem
@@ -33,5 +34,6 @@ enum BiosKeyboardKey {
 
 void init_keyboard();
 void change_lang(const char *lang);
+void get_char_pressed(void (*callback)(char));
 
 #endif

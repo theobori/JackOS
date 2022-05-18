@@ -10,6 +10,7 @@
     #include <stddef.h>
 
     #define NB_LANG 2
+    #define MAX_CALLBACKS 10
 
 enum Lang {
     US,
@@ -21,5 +22,7 @@ const char *accepted_lang[NB_LANG] = {
     "US", "FR"
 };
 
+void (*callbacks[MAX_CALLBACKS])(char);
+size_t callback_index = 0;
 
 #endif

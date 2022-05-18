@@ -10,5 +10,6 @@
     #include "shell/shell.h"
     #include "drivers/conn/timer.h"
     #include "GUI/GUI.h"
+    #include "GUI/tools/tty.h"
 
 #endif

@@ -13,12 +13,17 @@ UTILS_PATH		= src/utils
 SHELL_PATH		= src/shell
 DRIVERS_PATH	= src/drivers
 DANIEL_PATH		= src/GUI
+TTY_PATH		= $(DANIEL_PATH)/tools/tty
 C_SRC			= src/kernel.c \
 				src/gdt.c \
 				$(DANIEL_PATH)/lib/init.c \
 				$(DANIEL_PATH)/lib/put_pixel.c \
 				$(DANIEL_PATH)/lib/draw_square.c \
 				$(DANIEL_PATH)/lib/draw_char.c \
+				$(TTY_PATH)/init.c \
+				$(TTY_PATH)/update.c \
+				$(TTY_PATH)/display.c \
+				$(TTY_PATH)/buffer.c \
 				src/bios/protected/bios32.c \
 				$(UTILS_PATH)/memory/malloc.c \
 				$(UTILS_PATH)/memory/memcpy.c \

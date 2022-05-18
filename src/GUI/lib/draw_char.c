@@ -18,6 +18,8 @@ void daniel_draw_char_at_pos(char c, int x, int y, u32 color)
         for (int j = 0; j < CHAR_NB_COLS; j++) {
             if (font[c - 32][i][j] == 1) {
                 daniel_putpixel(x + j, y + i, color);
+            } else {
+                daniel_putpixel(x + j, y + i, D_BLACK);
             }
         }
     }
