@@ -40,6 +40,7 @@ typedef struct Daniel_s {
     void (*put_pixel)(int x, int y, u32 color);
     void (*draw_square)(u16 x, u16 y, u16 size, u32 color);
     void (*draw_char_at_pos)(char c, int x, int y, u32 color);
+    void (*printf)(size_t x, size_t y, char *format, ...);
     u32 g_width, g_height;
 } Daniel_t;
 

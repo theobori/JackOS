@@ -24,3 +24,40 @@ void daniel_draw_char_at_pos(char c, int x, int y, u32 color)
         }
     }
 }
+
+/**
+ * @brief draw a formatted string at a given position
+ * 
+ * @param x : x position
+ * @param y : y position
+ * @param format : format string
+ * @param ... : arguments
+ */
+void daniel_printf_at(size_t x, size_t y, char *format, ...)
+{
+    void *begin = &format;
+    int print_coord = x;
+
+    begin += sizeof(char *);
+    for (size_t i = 0; format[i]; i++) {
+        if (format[i] == '%') {
+            i++;
+            if (format[i] == 'c') {
+                char c = *(char *)begin;
+                begin += sizeof(char);
+                daniel_draw_char_at_pos(c, print_coord, y, D_WHITE);
+                print_coord += 8;
+            } else if (format[i] == 's') {
+                char *str = *(char **)begin;
+                begin += sizeof(char *);
+                for (size_t i = 0; str[i]; i++) {
+                    daniel_draw_char_at_pos(str[i], print_coord, y, D_WHITE);
+                    print_coord += 8;
+                }
+            }
+        } else {
+            daniel_draw_char_at_pos(format[i], print_coord, y, D_WHITE);
+            print_coord += 8;
+        }
+    }
+}

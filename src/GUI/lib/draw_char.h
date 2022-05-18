@@ -4,6 +4,7 @@
     #include "../GUI.h"
     #include "put_pixel.h"
     #include "draw_square.h"
+    #include "utils/string.h"
 
     #include "types.h"
 
@@ -12,5 +13,6 @@
     #define CHAR_NB_COLS 8
 
 void daniel_draw_char_at_pos(char c, int x, int y, u32 color);
+void daniel_printf_at(size_t x, size_t y, char *format, ...);
 
 #endif

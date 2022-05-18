@@ -12,6 +12,10 @@ void tty_newline()
     }
 }
 
+/**
+ * @brief Add a char in the buffer
+ * 
+ */
 void tty_delete_last_char()
 {
     if (this.cx > 0) {

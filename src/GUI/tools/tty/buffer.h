@@ -5,5 +5,6 @@
 
 void tty_newline();
 void tty_add_buff(char c);
+void tty_delete_last_char();
 
 #endif
