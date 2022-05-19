@@ -18,5 +18,8 @@ char **split(const char *str, const char *sep);
 int in(char c, const char *str);
 void strcpy(char *dest, const char *src);
 void strncpy(char *dest, const char *src, size_t n);
+void trim(char *str, char *sep);
+char *strdup(const char *str);
+int atoi(const char *str);
 
 #endif

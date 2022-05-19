@@ -6,7 +6,7 @@ static void callback(char c)
         return;
     }
     if (c == '\n') {
-        tty_newline();
+        tty_newline(1, 1);
     } else if (c == '\b') {
         tty_delete_last_char();
     } else {

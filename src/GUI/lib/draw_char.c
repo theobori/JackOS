@@ -14,6 +14,8 @@ char font[NB_CHAR][CHAR_NB_LINES][CHAR_NB_COLS] = {
  */
 void daniel_draw_char_at_pos(char c, int x, int y, u32 color)
 {
+    if (x >= WINDOW_W || y >= WINDOW_H)
+        return;
     for (int i = 0; i < CHAR_NB_LINES; i++) {
         for (int j = 0; j < CHAR_NB_COLS; j++) {
             if (font[c - 32][i][j] == 1) {

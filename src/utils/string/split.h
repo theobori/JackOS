@@ -6,5 +6,6 @@
     #include "strlen.h"
     #include "utils/memory.h"
     #include "strcpy.h"
+    #include "trim.h"
 
 #endif

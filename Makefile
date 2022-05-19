@@ -24,6 +24,8 @@ C_SRC			= src/kernel.c \
 				$(TTY_PATH)/update.c \
 				$(TTY_PATH)/display.c \
 				$(TTY_PATH)/buffer.c \
+				$(TTY_PATH)/commands.c \
+				$(TTY_PATH)/builtin_commands/ping.c \
 				src/bios/protected/bios32.c \
 				$(UTILS_PATH)/memory/malloc.c \
 				$(UTILS_PATH)/memory/memcpy.c \
@@ -37,6 +39,10 @@ C_SRC			= src/kernel.c \
 				$(UTILS_PATH)/string/strncpy.c \
 				$(UTILS_PATH)/string/strrev.c \
 				$(UTILS_PATH)/string/upper.c \
+				$(UTILS_PATH)/string/trim.c \
+				$(UTILS_PATH)/string/strdup.c \
+				$(UTILS_PATH)/string/strndup.c \
+				$(UTILS_PATH)/string/atoi.c \
 				src/interrupts/isr.c \
 				src/interrupts/idt.c \
 				$(DRIVERS_PATH)/conn/ports.c \
