@@ -9,7 +9,7 @@
 
 typedef struct file_system_s {
     int (*create)();
-    void (*dump_dev)();
+    char **(*list_dirs)(const char *);
 } file_system_t;
 
 file_system_t FILES;

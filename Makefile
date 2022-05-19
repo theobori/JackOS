@@ -59,6 +59,7 @@ C_SRC			= src/kernel.c \
 				$(SHELL_PATH)/builtin_commands/clear.c \
 				$(SYS_PATH)/files/init.c \
 				$(SYS_PATH)/files/create.c \
+				$(SYS_PATH)/files/list.c \
 
 ASM_PATH		= src/asm
 ASM_SRC			= $(ASM_PATH)/entry.asm \

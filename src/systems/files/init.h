@@ -5,5 +5,6 @@
     #include "../files.h"
     #include "intern.h"
     #include "utils/memory.h"
+    #include "list.h"
 
 #endif

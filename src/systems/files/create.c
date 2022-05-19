@@ -1,17 +1,5 @@
 #include "create.h"
 
-static files_t *find_next_folder(files_t *folder, const char *name)
-{
-    for (size_t i = 0; i < MAX_FILES; i++) {
-        if (folder->next[i] != NULL) {
-            if (strcmp(folder->next[i]->name, name)) {
-                return (folder->next[i]);
-            }
-        }
-    }
-    return (NULL);
-}
-
 int create_empty_file(files_t *file, const char *name)
 {
     if (strlen(name) > NAME_SIZE) {
