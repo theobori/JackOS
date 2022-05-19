@@ -24,7 +24,6 @@ void init_tty()
     this.buff_h = 37;
     memset(this.prompt, 0, 100);
     memset(this.prompt_index, -1, 37);
-    memset(this.test_cmd, 0, 2000);
     fill_prompt("$> ");
     for (size_t i = 0; i < this.buff_h; i++) {
         memset(this.buffer[i], ' ', this.buff_w);

@@ -12,8 +12,6 @@ typedef struct tty_intern_s {
     char prompt[100];
     char buffer[37][100];
     int prompt_index[37];
-    int test;
-    char test_cmd[2000];
 } tty_intern_t;
 
 tty_intern_t this;
