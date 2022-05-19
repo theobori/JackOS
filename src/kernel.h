@@ -11,5 +11,6 @@
     #include "drivers/conn/timer.h"
     #include "GUI/GUI.h"
     #include "GUI/tools/tty.h"
+    #include "systems/files.h"
 
 #endif

@@ -5,7 +5,7 @@ char *commands[] = {
     NULL
 };
 
-void (*commands_func[])() = {
+int (*commands_func[])(char **) = {
     &ping_command,
     NULL
 };
@@ -16,7 +16,7 @@ void (*commands_func[])() = {
  * @param command : command to purify
  * @return char* : purified command
  */
-static char *delete_prompt(const char *command)
+static const char *delete_prompt(const char *command)
 {
     return (command + strlen(this.prompt));
 }

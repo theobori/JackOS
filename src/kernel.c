@@ -14,6 +14,7 @@ void kmain()
     init_mouse();
     shell_init();
     init_tty();
+    init_file_system();
 
     TTY.update();
 }

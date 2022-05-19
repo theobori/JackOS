@@ -37,7 +37,7 @@ static int want_delete_prompt()
     int have_prompt = 0;
 
     for (size_t i = 0; this.prompt_index[i] != -1; i++) {
-        if (this.prompt_index[i] == this.cy) {
+        if ((size_t)this.prompt_index[i] == this.cy) {
             have_prompt = 1;
             break;
         }

@@ -101,7 +101,7 @@ void print_mouse_info()
  * 
  * @param r : register
  */
-void mouse_handler(registers_t *r)
+static void mouse_handler(__attribute__((unused))registers_t r)
 {
     static u8 mouse_cycle = 0;
     static char mouse_byte[3];

@@ -1,6 +1,8 @@
 #ifndef __STRLEN_H__
     #define __STRLEN_H__
 
-int strlen(const char *s);
+    #include "types.h"
+
+size_t strlen(const char *s);
 
 #endif

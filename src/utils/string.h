@@ -9,7 +9,7 @@
 ** you must include only this file to use these functions.
 */
 
-int strlen(const char *str);
+size_t strlen(const char *str);
 void strrev(char *s);
 void itoa(int n, char *str);
 int strcmp(const char *s1, const char *s2);

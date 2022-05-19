@@ -14,6 +14,7 @@ SHELL_PATH		= src/shell
 DRIVERS_PATH	= src/drivers
 DANIEL_PATH		= src/GUI
 TTY_PATH		= $(DANIEL_PATH)/tools/tty
+SYS_PATH		= src/systems
 C_SRC			= src/kernel.c \
 				src/gdt.c \
 				$(DANIEL_PATH)/lib/init.c \
@@ -56,6 +57,8 @@ C_SRC			= src/kernel.c \
 				$(SHELL_PATH)/builtin_commands/help.c \
 				$(SHELL_PATH)/builtin_commands/setxkbmap.c \
 				$(SHELL_PATH)/builtin_commands/clear.c \
+				$(SYS_PATH)/files/init.c \
+				$(SYS_PATH)/files/create.c \
 
 ASM_PATH		= src/asm
 ASM_SRC			= $(ASM_PATH)/entry.asm \
