@@ -16,12 +16,31 @@ void daniel_draw_char_at_pos(char c, int x, int y, u32 color)
 {
     if (x >= WINDOW_W || y >= WINDOW_H)
         return;
-    for (int i = 0; i < CHAR_NB_LINES; i++) {
-        for (int j = 0; j < CHAR_NB_COLS; j++) {
-            if (font[c - 32][i][j] == 1) {
-                daniel_putpixel(x + j, y + i, color);
+    char *letter = (&daniel_font) + c * CHAR_NB_LINES;
+
+    for (size_t i = 0; i < CHAR_NB_LINES; i++) {
+        char byte = *(letter + i);
+        for (size_t j = 0; j < CHAR_NB_COLS; j++, byte >>= 1) {
+            if (byte & 1) {
+                daniel_putpixel(x + 8 - j, y + i, D_WHITE);
             } else {
-                daniel_putpixel(x + j, y + i, D_BLACK);
+                daniel_putpixel(x + 8 - j, y + i, D_BLACK);
+            }
+        }
+    }
+}
+
+void test(const char c)
+{
+    char *letter = (&daniel_font) + (c - 32) * CHAR_NB_LINES;
+
+    for (size_t i = 0; i < CHAR_NB_LINES; i++) {
+        char byte = *(letter + i);
+        for (size_t j = 0; j < CHAR_NB_COLS; j++, byte >>= 1) {
+            if (byte & 1) {
+                daniel_putpixel(100 - j, 100 + i, D_WHITE);
+            } else {
+                daniel_putpixel(100 - j, 100 + i, D_BLACK);
             }
         }
     }

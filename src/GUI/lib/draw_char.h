@@ -14,5 +14,8 @@
 
 void daniel_draw_char_at_pos(char c, int x, int y, u32 color);
 void daniel_printf_at(size_t x, size_t y, char *format, ...);
+void test(const char c);
+
+extern char daniel_font;
 
 #endif

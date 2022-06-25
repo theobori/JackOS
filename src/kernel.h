@@ -12,5 +12,6 @@
     #include "GUI/GUI.h"
     #include "GUI/tools/tty.h"
     #include "systems/files.h"
+    #include "GUI/lib/draw_char.h"
 
 #endif

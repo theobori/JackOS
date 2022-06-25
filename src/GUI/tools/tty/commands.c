@@ -2,11 +2,19 @@
 
 char *commands[] = {
     "ping",
+    "pwd",
+    "ls",
+    "mkdir",
+    "cd",
     NULL
 };
 
 int (*commands_func[])(char **) = {
     &ping_command,
+    &pwd_command,
+    &ls_command,
+    &mkdir_command,
+    &cd_command,
     NULL
 };
 

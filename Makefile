@@ -27,6 +27,10 @@ C_SRC			= src/kernel.c \
 				$(TTY_PATH)/buffer.c \
 				$(TTY_PATH)/commands.c \
 				$(TTY_PATH)/builtin_commands/ping.c \
+				$(TTY_PATH)/builtin_commands/pwd.c \
+				$(TTY_PATH)/builtin_commands/ls.c \
+				$(TTY_PATH)/builtin_commands/mkdir.c \
+				$(TTY_PATH)/builtin_commands/cd.c \
 				src/bios/protected/bios32.c \
 				$(UTILS_PATH)/memory/malloc.c \
 				$(UTILS_PATH)/memory/memcpy.c \
@@ -37,6 +41,7 @@ C_SRC			= src/kernel.c \
 				$(UTILS_PATH)/string/strcmp.c \
 				$(UTILS_PATH)/string/strcpy.c \
 				$(UTILS_PATH)/string/strlen.c \
+				$(UTILS_PATH)/string/count.c \
 				$(UTILS_PATH)/string/strncpy.c \
 				$(UTILS_PATH)/string/strrev.c \
 				$(UTILS_PATH)/string/upper.c \
@@ -44,6 +49,7 @@ C_SRC			= src/kernel.c \
 				$(UTILS_PATH)/string/strdup.c \
 				$(UTILS_PATH)/string/strndup.c \
 				$(UTILS_PATH)/string/atoi.c \
+				$(UTILS_PATH)/string/strcat.c \
 				src/interrupts/isr.c \
 				src/interrupts/idt.c \
 				$(DRIVERS_PATH)/conn/ports.c \
@@ -60,6 +66,9 @@ C_SRC			= src/kernel.c \
 				$(SYS_PATH)/files/init.c \
 				$(SYS_PATH)/files/create.c \
 				$(SYS_PATH)/files/list.c \
+				$(SYS_PATH)/files/change_dir.c \
+				$(SYS_PATH)/files/dir_exist.c \
+				$(SYS_PATH)/files/get_folder.c \
 
 ASM_PATH		= src/asm
 ASM_SRC			= $(ASM_PATH)/entry.asm \
@@ -67,7 +76,8 @@ ASM_SRC			= $(ASM_PATH)/entry.asm \
 				$(ASM_PATH)/load_idt.asm \
 				$(ASM_PATH)/irq.asm \
 				$(ASM_PATH)/isr.asm \
-				$(ASM_PATH)/bios32_call.asm
+				$(ASM_PATH)/bios32_call.asm \
+				src/GUI/fonts/daniel.asm
 
 OBJ 			= $(C_SRC:.c=.o) $(ASM_SRC:.asm=.o)
 TARGET_BIN		= boot/JackOS.bin

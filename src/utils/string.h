@@ -23,5 +23,7 @@ char *strdup(const char *str);
 char *strndup(const char *str, size_t n);
 void trim(char *str, char *sep);
 int atoi(const char *str);
+size_t count(const char *str, char c);
+void strcat(char *dest, char *src);
 
 #endif

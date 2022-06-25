@@ -6,5 +6,7 @@
     #include "intern.h"
     #include "utils/memory.h"
     #include "list.h"
+    #include "change_dir.h"
+    #include "get_folder.h"
 
 #endif
