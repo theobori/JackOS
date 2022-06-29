@@ -7,7 +7,7 @@
  * 
  * @return void * : Pointer to the free memory space
  */
-void *malloc(__attribute__((unused))size_t size)
+void *malloc(size_t size)
 {
     void *ptr = (void *)(mem_addr + used);
     used += size;

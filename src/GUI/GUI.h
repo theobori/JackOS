@@ -11,6 +11,9 @@
 */
 
     #define RGB_COLOR(r, g, b) (r << 16 | g << 8 | b)
+    #define WINDOW_W 800
+    #define WINDOW_H 600
+
 
 typedef enum Daniel_color_e {
     D_WHITE = RGB_COLOR(255, 255, 255),
@@ -36,6 +39,8 @@ typedef struct Daniel_s {
     u32 *g_vbe_buffer;
     void (*put_pixel)(int x, int y, u32 color);
     void (*draw_square)(u16 x, u16 y, u16 size, u32 color);
+    void (*draw_char_at_pos)(char c, int x, int y, u32 color);
+    void (*printf)(size_t x, size_t y, char *format, ...);
     u32 g_width, g_height;
 } Daniel_t;
 

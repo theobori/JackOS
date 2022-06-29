@@ -1,6 +1,30 @@
 #include "split.h"
 
 /**
+ * @brief count the nb of words that are in a string
+ * 
+ * @param str : the string to count
+ * @param sep : the separator
+ * @return int : the nb of words
+ */
+size_t count_nb_words(const char *str, const char *sep)
+{
+    size_t nb_words = 0;
+    int last_char_sep = 1;
+
+    for (size_t i = 0; str[i]; i++) {
+        int is_in = in(str[i], sep);
+        if (last_char_sep && !is_in) {
+            nb_words++;
+            last_char_sep = 0;
+        } else if (is_in) {
+            last_char_sep = 1;
+        }
+    }
+    return (nb_words);
+}
+
+/**
  * @brief function that split a string into an array of strings
  * 
  * @param str : the string to split
@@ -9,28 +33,24 @@
  */
 char **split(const char *str, const char *sep)
 {
-    char **arr = NULL;
-    char *buf = malloc(sizeof(char) * (strlen(str) + 1));
-    int empty_buf = 0;
-    int buf_start = 0;
-    int arr_i = 0;
-    int is_sep = 0;
+    const size_t nb_words = count_nb_words(str, sep);
+    char **arr = malloc(sizeof(char *) * (nb_words + 1));
+    size_t buff_id = 0;
+    int empty_buf = 1;
+    size_t arr_id = 0;
 
-    strcpy(buf, str);
-    for (int i = 0; buf[i]; i++) {
-        is_sep = in(buf[i], sep);
-        if (is_sep && !empty_buf) {
-            buf[i] = '\0';
-            arr[arr_i++] = &buf[buf_start];
+    for (size_t i = 0; str[i]; i++) {
+        int is_sep = in(str[i], sep);
+        if (!is_sep && empty_buf) {
+            empty_buf = 0;
+            buff_id = i;
+        } else if (is_sep && !empty_buf) {
+            arr[arr_id++] = strndup(str + buff_id, i - buff_id);
             empty_buf = 1;
-        } else if (!is_sep && empty_buf) {
-            buf_start = i;
-            empty_buf = 0;
-        } else if (!is_sep && !empty_buf) {
-            empty_buf = 0;
         }
     }
     if (!empty_buf)
-        arr[arr_i++] = &buf[buf_start];
+        arr[arr_id++] = strndup(str + buff_id, strlen(str) - buff_id);
+    arr[arr_id] = NULL;
     return (arr);
 }
