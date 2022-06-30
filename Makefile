@@ -33,6 +33,7 @@ C_SRC			= src/kernel.c \
 				$(TTY_PATH)/builtin_commands/mkdir.c \
 				$(TTY_PATH)/builtin_commands/cd.c \
 				$(TTY_PATH)/builtin_commands/echo.c \
+				$(TTY_PATH)/builtin_commands/man.c \
 				$(TTY_PATH)/builtin_commands/cat.c \
 				$(TTY_PATH)/builtin_commands/clear.c \
 				src/bios/protected/bios32.c \

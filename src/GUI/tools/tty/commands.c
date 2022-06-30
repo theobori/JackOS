@@ -9,6 +9,7 @@ char *commands[] = {
     "clear",
     "echo",
     "cat",
+    "man",
     NULL
 };
 
@@ -21,6 +22,7 @@ int (*commands_func[])(char **) = {
     &clear_command,
     &echo_command,
     &cat_command,
+    &man_command,
     NULL
 };
 

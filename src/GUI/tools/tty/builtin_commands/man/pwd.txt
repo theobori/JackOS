@@ -1,0 +1,3 @@
+"pwd command will print the current path\n\
+Usage:\n\
+    - pwd"

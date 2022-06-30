@@ -1,0 +1,3 @@
+"man command permit to have more informations for commands\n\
+Usage:\n\
+    - man (command)"

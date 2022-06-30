@@ -1,0 +1,3 @@
+"cat command can read data froms files \n\
+Usage: \n\
+    - cat (file)"

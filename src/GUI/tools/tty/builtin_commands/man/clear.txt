@@ -1,0 +1,3 @@
+"clear can clear the tty\n\
+USAGE:\n\
+    - clear"
