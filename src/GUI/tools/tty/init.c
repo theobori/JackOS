@@ -33,5 +33,6 @@ void init_tty()
     TTY.new_line = &tty_newline;
     TTY.display = &tty_display;
     TTY.update = &update;
+    TTY.clear = &tty_clear;
     TTY.display();
 }

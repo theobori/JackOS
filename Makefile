@@ -26,11 +26,13 @@ C_SRC			= src/kernel.c \
 				$(TTY_PATH)/display.c \
 				$(TTY_PATH)/buffer.c \
 				$(TTY_PATH)/commands.c \
+				$(TTY_PATH)/clear.c \
 				$(TTY_PATH)/builtin_commands/ping.c \
 				$(TTY_PATH)/builtin_commands/pwd.c \
 				$(TTY_PATH)/builtin_commands/ls.c \
 				$(TTY_PATH)/builtin_commands/mkdir.c \
 				$(TTY_PATH)/builtin_commands/cd.c \
+				$(TTY_PATH)/builtin_commands/clear.c \
 				src/bios/protected/bios32.c \
 				$(UTILS_PATH)/memory/malloc.c \
 				$(UTILS_PATH)/memory/memcpy.c \

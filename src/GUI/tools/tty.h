@@ -11,6 +11,7 @@ typedef struct tty_s {
     void (*update)();
     void (*display)();
     void (*new_line)();
+    void (*clear)();
 } tty_t;
 
 tty_t TTY;

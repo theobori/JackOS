@@ -6,6 +6,7 @@ char *commands[] = {
     "ls",
     "mkdir",
     "cd",
+    "clear",
     NULL
 };
 
@@ -15,6 +16,7 @@ int (*commands_func[])(char **) = {
     &ls_command,
     &mkdir_command,
     &cd_command,
+    &clear_command,
     NULL
 };
 
