@@ -32,6 +32,8 @@ C_SRC			= src/kernel.c \
 				$(TTY_PATH)/builtin_commands/ls.c \
 				$(TTY_PATH)/builtin_commands/mkdir.c \
 				$(TTY_PATH)/builtin_commands/cd.c \
+				$(TTY_PATH)/builtin_commands/echo.c \
+				$(TTY_PATH)/builtin_commands/cat.c \
 				$(TTY_PATH)/builtin_commands/clear.c \
 				src/bios/protected/bios32.c \
 				$(UTILS_PATH)/memory/malloc.c \
@@ -43,6 +45,7 @@ C_SRC			= src/kernel.c \
 				$(UTILS_PATH)/string/strcmp.c \
 				$(UTILS_PATH)/string/strcpy.c \
 				$(UTILS_PATH)/string/strlen.c \
+				$(UTILS_PATH)/string/join.c \
 				$(UTILS_PATH)/string/count.c \
 				$(UTILS_PATH)/string/strncpy.c \
 				$(UTILS_PATH)/string/strrev.c \
@@ -68,6 +71,8 @@ C_SRC			= src/kernel.c \
 				$(SYS_PATH)/files/init.c \
 				$(SYS_PATH)/files/create.c \
 				$(SYS_PATH)/files/list.c \
+				$(SYS_PATH)/files/write.c \
+				$(SYS_PATH)/files/read.c \
 				$(SYS_PATH)/files/change_dir.c \
 				$(SYS_PATH)/files/dir_exist.c \
 				$(SYS_PATH)/files/get_folder.c \

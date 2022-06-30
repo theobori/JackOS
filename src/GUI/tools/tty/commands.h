@@ -9,6 +9,8 @@
     #include "builtin_commands/mkdir.h"
     #include "builtin_commands/cd.h"
     #include "builtin_commands/clear.h"
+    #include "builtin_commands/echo.h"
+    #include "builtin_commands/cat.h"
     #include "utils/memory.h"
 
 void launch_command(const char *command);
