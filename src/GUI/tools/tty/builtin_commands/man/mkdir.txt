@@ -1,0 +1,3 @@
+"mkdir command can create file that's named\n\
+USAGE:\n\
+    - mkdir (name)"

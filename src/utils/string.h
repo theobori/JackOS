@@ -25,5 +25,6 @@ void trim(char *str, char *sep);
 int atoi(const char *str);
 size_t count(const char *str, char c);
 void strcat(char *dest, char *src);
+char *join(char **arr, char *sep);
 
 #endif

@@ -1,0 +1,4 @@
+"Ping command, here is a ping command that will print pong n times: \n\
+\n\
+Usage:\n\
+    - ping [n]"

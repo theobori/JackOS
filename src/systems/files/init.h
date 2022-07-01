@@ -8,5 +8,7 @@
     #include "list.h"
     #include "change_dir.h"
     #include "get_folder.h"
+    #include "write.h"
+    #include "read.h"
 
 #endif

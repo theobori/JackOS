@@ -23,4 +23,5 @@ int mkdir_command(char **args)
     curr_folder->next[new_file_index]->name = malloc(sizeof(char) * name_len);
     memset(curr_folder->next[new_file_index]->name, 0, name_len);
     strcpy(curr_folder->next[new_file_index]->name, name);
+    return (0);
 }

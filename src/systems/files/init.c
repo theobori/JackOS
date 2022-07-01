@@ -8,4 +8,6 @@ void init_file_system()
     FILES.curr_pwd = "/";
     FILES.get_folder = &get_folder;
     FILES.change_dir = &change_dir;
+    FILES.read = &read;
+    FILES.write = &write;
 }

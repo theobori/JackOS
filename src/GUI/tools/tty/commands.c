@@ -6,6 +6,10 @@ char *commands[] = {
     "ls",
     "mkdir",
     "cd",
+    "clear",
+    "echo",
+    "cat",
+    "man",
     NULL
 };
 
@@ -15,6 +19,10 @@ int (*commands_func[])(char **) = {
     &ls_command,
     &mkdir_command,
     &cd_command,
+    &clear_command,
+    &echo_command,
+    &cat_command,
+    &man_command,
     NULL
 };
 

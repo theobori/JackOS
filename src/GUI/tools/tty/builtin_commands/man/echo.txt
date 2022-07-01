@@ -1,0 +1,3 @@
+"echo command can write message in file\n\
+USAGE: \n\
+    - echo (path) (command)"

@@ -5,6 +5,7 @@
     #include "display.h"
     #include "update.h"
     #include "buffer.h"
+    #include "clear.h"
     #include "intern.h"
     #include "utils/memory.h"
 

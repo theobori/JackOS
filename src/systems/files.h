@@ -27,6 +27,8 @@ typedef struct file_system_s {
     int (*change_dir)(char *path);
     int (*dir_exist)(char *dir);
     files_t *(*get_folder)(char *path);
+    int (*write)(files_t *folder, char *content);
+    char *(*read)(files_t *folder);
 } file_system_t;
 
 file_system_t FILES;
