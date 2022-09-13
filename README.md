@@ -28,4 +28,5 @@ A general guide for contributing can be found in [`Contributing.md`](doc/Contrib
 
 ## License
 
+
 JackOS is licensed under a MIT license.
