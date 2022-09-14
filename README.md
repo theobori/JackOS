@@ -30,3 +30,4 @@ A general guide for contributing can be found in [`Contributing.md`](doc/Contrib
 
 
 JackOS is licensed under a MIT license.
+
